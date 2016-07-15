@@ -1,0 +1,14 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    "node_modules"
+  ],
+  "verbose": true,
+  "execMap": {
+    "js": "babel-node"
+  },
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js json 'server.view.html'"
+}
