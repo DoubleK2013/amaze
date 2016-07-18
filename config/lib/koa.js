@@ -15,6 +15,8 @@ import Mongoose from './mongoose'
 
 import routes from './route'
 
+export default init(new Koa())
+
 function init(app) {
     initViewEngine(app)
     initLogger(app)
@@ -34,7 +36,8 @@ function initBodyParser(app) {
 // 模板引擎：swig
 // 扩展名： server.view.html
 function initViewEngine(app) {
-    app.use(views(`${__dirname}/module/server/view`, {
+
+    app.use(views(`${path.resolve('.')}/module/server/view`, {
         extension: 'server.view.html',
         map: {
             'server.view.html': 'swig'
@@ -71,4 +74,3 @@ function initServerRouter(app) {
     }
 }
 
-export default init(new Koa())
