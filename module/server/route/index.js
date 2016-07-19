@@ -1,6 +1,6 @@
 import Router from 'koa-router'
 
-import * as controller from '../controller/home'
+import * as controller from '../controller/index'
 
 let router = new Router()
 

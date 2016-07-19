@@ -1,4 +1,6 @@
-import home from '../../module/server/route/home'
+import index from '../../module/server/route/index'
+import api from '../../module/server/route/api'
 export default {
-    home
+    index,
+    api
 }

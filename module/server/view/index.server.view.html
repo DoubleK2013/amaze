@@ -2,9 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-    {{ title }}
+    <main>
+        <h1>{{ title }}</h1>
+        <div>
+            <ul>
+            {% for key in api %}
+                <li {% if loop.first %} class="first" {% endif %}>
+                    url: /api/{{ key }}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </main>
 </body>
 </html>
