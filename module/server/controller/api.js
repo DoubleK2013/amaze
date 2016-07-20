@@ -12,7 +12,7 @@ export async function sendFile(ctx, next) {
 
 export function getColor(ctx, next) {
     ctx.body = {
-        color: "#558811"
+        color: '#558811'
     }
     next()
 }
