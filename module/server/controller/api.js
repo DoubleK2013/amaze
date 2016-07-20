@@ -10,6 +10,13 @@ export async function sendFile(ctx, next) {
     next()
 }
 
+export function getColor(ctx, next) {
+    ctx.body = {
+        color: "#558811"
+    }
+    next()
+}
+
 function _send(ctx, path) {
     return send(ctx, path, {
         root: `${resolve('.')}/data`

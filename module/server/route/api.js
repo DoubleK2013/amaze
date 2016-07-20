@@ -7,6 +7,8 @@ let router = new Router({
 })
 
 router.get('/getUsers', api.userAPI.getUsers)
+router.get('/color', api.getColor)
+router.post('/color', api.getColor)
 
 
 export default router
