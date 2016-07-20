@@ -7,8 +7,8 @@ npm-debug.log*
 node_modules
 
 # ide config
-.idea
+.idea/
 
 # static
-public
+public/
 

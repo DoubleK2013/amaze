@@ -3,8 +3,8 @@ export default {
 
     },
     server: {
-        allJS: ['app.js', 'config/**/*.js', 'module/*/server/**/*.js'],
-        views: ['module/*/server/view/**/*.server.view.html'],
+        allJS: ['app.js', 'config/**/*.js', 'module/server/**/*.js'],
+        views: ['module/server/view/**/*.server.view.html'],
         gulpfile: ['gulpfile.babel.js']
     }
 }

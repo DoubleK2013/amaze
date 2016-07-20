@@ -1,12 +1,12 @@
 import Router from 'koa-router'
 
-import * as controller from '../controller/api'
+import * as api from '../controller/api'
 
 let router = new Router({
     prefix: '/api'
 })
 
-router.get('/getUsers', controller.getUsers)
+router.get('/getUsers', api.userAPI.getUsers)
 
 
 export default router

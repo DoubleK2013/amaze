@@ -1,0 +1,122 @@
+{
+  "total": 150,
+  "per_page": 10,
+  "current_page": 1,
+  "last_page": 15,
+  "next_page_url": "http:\/\/localhost:3000\/api\/getUsers?sort=name%7Casc&per_page=10&page=2",
+  "prev_page_url": null,
+  "from": 1,
+  "to": 10,
+  "data": [
+    {
+      "id": 82,
+      "name": "Aglae Hartmann",
+      "nickname": "dignissimos",
+      "email": "anderson84@example.com",
+      "birthdate": "2004-03-17",
+      "gender": "M",
+      "group_id": "5",
+      "created_at": "2016-05-14 03:47:34",
+      "updated_at": "2016-05-14 03:47:34"
+    },
+    {
+      "id": 83,
+      "name": "Aiden Wilkinson",
+      "nickname": "tempore",
+      "email": "norris.emard@example.com",
+      "birthdate": "2002-12-24",
+      "gender": "F",
+      "group_id": "5",
+      "created_at": "2016-05-14 03:47:34",
+      "updated_at": "2016-05-14 03:47:34"
+    },
+    {
+      "id": 22,
+      "name": "Albina Yundt",
+      "nickname": "consequatur",
+      "email": "auer.ottilie@example.net",
+      "birthdate": "1987-11-29",
+      "gender": "F",
+      "group_id": "1",
+      "created_at": "2016-04-21 09:21:33",
+      "updated_at": "2016-04-21 09:21:33"
+    },
+    {
+      "id": 86,
+      "name": "Alejandrin Walker",
+      "nickname": "sit",
+      "email": "kuhlman.mark@example.net",
+      "birthdate": "2000-05-13",
+      "gender": "M",
+      "group_id": "3",
+      "created_at": "2016-05-14 03:47:34",
+      "updated_at": "2016-05-14 03:47:34"
+    },
+    {
+      "id": 16,
+      "name": "Alford McGlynn IV",
+      "nickname": "vero",
+      "email": "nicholaus59@example.com",
+      "birthdate": "2002-05-04",
+      "gender": "F",
+      "group_id": "1",
+      "created_at": "2016-04-21 09:21:33",
+      "updated_at": "2016-04-21 09:21:33"
+    },
+    {
+      "id": 31,
+      "name": "Alice Hermann MD",
+      "nickname": "enim",
+      "email": "evelyn.kohler@example.org",
+      "birthdate": "2003-07-16",
+      "gender": "F",
+      "group_id": "2",
+      "created_at": "2016-04-21 09:21:33",
+      "updated_at": "2016-04-21 09:21:33"
+    },
+    {
+      "id": 134,
+      "name": "Ana Wiza",
+      "nickname": "ut",
+      "email": "nicolas61@example.com",
+      "birthdate": "1992-02-05",
+      "gender": "F",
+      "group_id": "3",
+      "created_at": "2016-05-14 03:47:34",
+      "updated_at": "2016-05-14 03:47:34"
+    },
+    {
+      "id": 7,
+      "name": "Annabell Walter",
+      "nickname": "accusamus",
+      "email": "colin00@example.org",
+      "birthdate": "1995-05-08",
+      "gender": "F",
+      "group_id": "1",
+      "created_at": "2016-04-21 09:21:33",
+      "updated_at": "2016-04-21 09:21:33"
+    },
+    {
+      "id": 44,
+      "name": "Antonette Aufderhar",
+      "nickname": "exercitationem",
+      "email": "iblanda@example.com",
+      "birthdate": "2001-02-15",
+      "gender": "M",
+      "group_id": "1",
+      "created_at": "2016-04-21 09:21:33",
+      "updated_at": "2016-04-21 09:21:33"
+    },
+    {
+      "id": 127,
+      "name": "Antonette Nienow",
+      "nickname": "dolores",
+      "email": "hirthe.pasquale@example.org",
+      "birthdate": "1990-06-17",
+      "gender": "M",
+      "group_id": "4",
+      "created_at": "2016-05-14 03:47:34",
+      "updated_at": "2016-05-14 03:47:34"
+    }
+  ]
+}
