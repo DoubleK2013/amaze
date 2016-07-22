@@ -6,6 +6,11 @@ export async function addUser(ctx, next) {
     next()
 }
 
+export async function getUser(ctx, next) {
+    ctx.body = await userService.getUser()
+    next()
+}
+
 export async function getUsers(ctx, next) {
     const page = Object.assign({
         total: 0,
