@@ -2,8 +2,10 @@ import send from 'koa-send'
 import { resolve } from 'path'
 
 import * as user from './user'
+import * as menu from './menu'
 
 export let userAPI = user
+export let menuAPI = menu
 
 export async function sendFile(ctx, next) {
     await _send(ctx, 'data.json')

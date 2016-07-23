@@ -18,7 +18,7 @@ export async function getUser(param) {
     return await UserModel.findOne(param).exec()
 }
 
-export async function getUsers(param) {
+export async function getUsers() {
 
     let pagination = new PageExtra()
     let users = await UserModel
