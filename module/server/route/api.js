@@ -6,6 +6,8 @@ let router = new Router({
     prefix: '/api'
 })
 
+router.get('/prices', api.priceAPI.getPrices)
+
 router.get('/users', api.userAPI.getUsers)
 router.post('/user', api.userAPI.addUser)
 router.get('/user', api.userAPI.getUser)

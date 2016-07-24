@@ -3,9 +3,11 @@ import { resolve } from 'path'
 
 import * as user from './user'
 import * as menu from './menu'
+import * as price from './price'
 
 export let userAPI = user
 export let menuAPI = menu
+export let priceAPI = price
 
 export async function sendFile(ctx, next) {
     await _send(ctx, 'data.json')

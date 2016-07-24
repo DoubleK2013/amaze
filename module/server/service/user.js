@@ -18,15 +18,18 @@ export async function getUser(param) {
     return await UserModel.findOne(param).exec()
 }
 
-export async function getUsers() {
-
+export async function getUsers(param) {
     let pagination = new PageExtra()
+    Object.assign(pagination, param)
     let users = await UserModel
-        .find({name:'Aiden Wilkinson'})
+        .find({})
+        .limit(5)
         .exec()
-
     pagination.total = users.length
-    pagination.data = users
+    pagination.data = users.slice(pagination.form, pagination.to)
+    console.log('form', pagination.form)
+    console.log('to', pagination.to)
+    console.log('page', pagination)
     return pagination
 }
 
