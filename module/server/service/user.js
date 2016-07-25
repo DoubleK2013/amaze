@@ -19,18 +19,23 @@ export async function getUser(param) {
 }
 
 export async function getUsers(param) {
-    let pagination = new PageExtra()
-    Object.assign(pagination, param)
+
+    let pagination = new PageExtra(param)
+
     let users = await UserModel
         .find({})
-        .limit(5)
         .exec()
+
     pagination.total = users.length
-    pagination.data = users.slice(pagination.form, pagination.to)
-    console.log('form', pagination.form)
-    console.log('to', pagination.to)
-    console.log('page', pagination)
-    return pagination
+    pagination.data = users.slice(pagination.from, pagination.to)
+
+    let { from, to, last_page} = pagination
+
+    return Object.assign({
+        from: from + 1,
+        to,
+        last_page
+    }, pagination)
 }
 
 UserSchema.statics.findByName = (name) => {

@@ -12,8 +12,7 @@ export async function getUser(ctx, next) {
 }
 
 export async function getUsers(ctx, next) {
-    console.log('url', ctx.url)
-    const page = Object.assign({}, ctx.query)
-    ctx.body = await userService.getUsers(page)
+    const param = Object.assign({}, ctx.query)
+    ctx.body = await userService.getUsers(param)
     next()
 }
