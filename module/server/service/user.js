@@ -38,6 +38,10 @@ export async function getUsers(param) {
     }, pagination)
 }
 
+export async function updateUser(param) {
+    return await UserModel.update(param).exec()
+}
+
 UserSchema.statics.findByName = (name) => {
     return UserModel.findOne({
         name: name

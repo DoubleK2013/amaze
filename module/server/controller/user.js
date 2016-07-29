@@ -16,3 +16,9 @@ export async function getUsers(ctx, next) {
     ctx.body = await userService.getUsers(param)
     next()
 }
+
+export async function updateUser(ctx, next) {
+    const user = ctx.body
+    ctx.body = await userService.updateUser(user)
+    next()
+}

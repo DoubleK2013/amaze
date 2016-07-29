@@ -10,6 +10,7 @@ router.get('/prices', api.priceAPI.getPrices)
 
 router.get('/users', api.userAPI.getUsers)
 router.post('/user', api.userAPI.addUser)
+router.patch('/user', api.userAPI.updateUser)
 router.get('/user', api.userAPI.getUser)
 
 router.get('/color', api.getColor)
