@@ -6,7 +6,8 @@
   "scripts": {
     "start": "gulp",
     "test": "npm run test",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "gen": "node script/generator.js -f fname"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "swig": "^1.4.2"
   },
   "devDependencies": {
+    "argv": "0.0.2",
     "babel-cli": "^6.10.1",
     "babel-eslint": "^6.1.2",
     "babel-plugin-transform-runtime": "^6.6.0",
@@ -52,6 +54,8 @@
     "gulp-eslint": "^2.0.0",
     "gulp-load-plugins": "^1.2.4",
     "gulp-nodemon": "^2.1.0",
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "ora": "^0.3.0",
+    "shelljs": "^0.7.3"
   }
 }
