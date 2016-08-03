@@ -1,19 +1,22 @@
-require('shelljs/global')
-const argv = require('argv')
-const cfg = require('../config/dev/generator')
+import 'shelljs/global'
 
-const tmpl = require('../config/dev/tmpl/controller')('price')
+import config from '../config/dev/default'
 
-//console.log(argv)
-//console.log(cfg.dir)
-console.log(cfg)
-console.log(tmpl)
+import controllerGenerator from '../config/dev/generator/controller'
+import modelGenerator from '../config/dev/generator/model'
+import routeGenerator from '../config/dev/generator/route'
+import serviceGenerator from '../config/dev/generator/service'
 
 
 
-argv.option({
-    name: 'file',
-    short: 'f',
-    type: 'string'
-})
-argv.help()
+let arg = process.argv.slice(2)
+
+console.log(controllerGenerator('price'))
+console.log(modelGenerator)
+console.log(routeGenerator('user'))
+console.log(serviceGenerator)
+console.log(config.schema)
+
+console.log('argv', arg)
+
+
