@@ -1,42 +1,37 @@
-import { camelCase } from 'change-case'
-
 export default function (name) {
-    return getTmpl(name)
-}
-
-function getTmpl (name) {
     return `
 
 import * as ${name} from '../service/${name}'
 
-export async function ${camelCase(['add', name])}(ctx, next) {
-    let ${name}Entry = ctx.body
-    ctx.body = await ${name}.${camelCase(['add', name])}(${name}Entry)
+export async function save(ctx, next) {
+    let entry = ctx.body
+    ctx.body = await ${name}.save(entry)
     next()
 }
 
-export async function ${camelCase(['remove', name])}(ctx, next) {
-    let param = ctx.body
-    ctx.body = await ${name}.${camelCase(['remove', name])}(param)
+export async function remove(ctx, next) {
+    let id = ctx.params.id
+    ctx.body = await ${name}.remove(id)
     next()
 }
 
-export async function ${camelCase(['update', name])}(ctx, next) {
-    let param = ctx.body
-    ctx.body = await ${name}.${camelCase(['update', name])}(param)
+export async function update(ctx, next) {
+    let entry = ctx.body
+    ctx.body = await ${name}.update(entry)
     next()
 }
 
-export async function ${camelCase(['get', name])}(ctx, next) {
-    ctx.body = await ${name}.${camelCase(['get', name])}()
+export async function findOne(ctx, next) {
+    let id = ctx.params.id
+    ctx.body = await ${name}.find(id)
     next()
 }
 
-export async function ${camelCase(['get', name])}s(ctx, next) {
-    ctx.body = await ${name}.${camelCase(['get', name])}s()
+export async function find(ctx, next) {
+    let filter = ctx.body
+    ctx.body = await ${name}.find(filter)
     next()
 }
 
 `.trim()
-
 }

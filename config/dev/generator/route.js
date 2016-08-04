@@ -1,30 +1,19 @@
-import { camelCase } from 'change-case'
-
 export default function (name) {
-    return getTmpl(name)
-}
-
-function getTmpl (name) {
     return `
 
 import Router from 'koa-router'
 
 import * as ${name} from '../controller/${name}'
 
-let router = new Router({
-    prefix: '/${name}'
-})
+let router = new Router()
 
-router.post('/${name}', ${name}.${camelCase(['add', name])})
-router.patch('/${name}', ${name}.${camelCase(['update', name])})
-router.delete('/${name}/:id', ${camelCase(['remove', name])})
-router.get('/${name}/:id', ${name}.${camelCase(['get', name])})
-router.get('/${name}s', ${name}.${camelCase(['get', name])}s)
-
+router.post('/${name}', ${name}.save)
+router.patch('/${name}', ${name}.update)
+router.delete('/${name}/:id', ${name}.remove)
+router.get('/${name}/:id', ${name}.findOne)
+router.get('/${name}s', ${name}.find)
 
 export default router
 
-
 `.trim()
-
 }
