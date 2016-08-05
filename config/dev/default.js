@@ -1,4 +1,3 @@
 export default {
-    tmpl: ['config/dev/tmpl/*.js'],
-    schema: ['data/schema/*.json']
+    schema: ['data/schema/*.js']
 }

@@ -1,59 +1,53 @@
-import fs from 'fs'
+import fs from 'fs-promise'
 import path from 'path'
 
+import yargs from 'yargs'
+import program from 'commander'
+import ora from 'ora'
+
 import pkg from '../package'
+import config from '../config/dev/default'
 
 import controllerGenerator from '../config/dev/generator/controller'
 import modelGenerator from '../config/dev/generator/model'
 import routeGenerator from '../config/dev/generator/route'
 import serviceGenerator from '../config/dev/generator/service'
 
-import yargs from 'yargs'
-import program from 'commander'
-import ora from 'ora'
+import getGlobbedPaths from '../util/getGlobbedPaths'
 
-console.log(pkg.version)
+const schemas = getGlobbedPaths(config.schema).map(function(v) {
+    return path.basename(v, path.extname(v))
+})
 
 program
-    .version('0.0.1')
+    .version(pkg.version)
     .usage('[option] <schema ...>')
     .option('-s, --schema', 'schema name')
     .option('-a, --all', 'generate all schema from data/schema')
     .parse(process.argv)
 
-const spinner = ora('creating')
-
-if(!process.argv.slice(2).length) {
+if (!process.argv.slice(2).length) {
     program.help()
     process.exit(0)
 }
 
-if(program.schema) {
-    console.log(program.schema)
-}
+const spinner = ora('creating')
 
 spinner.start()
 
-if(yargs.argv.a) {
-    generateAll(yargs.argv.s)
-    spinner.succeed('done')
-    process.exit(0)
+if (yargs.argv.a) {
+    generateAll(yargs.argv.s, spinner.stop, spinner.fail)
 }
 
-try {
-    fs.statSync(path.resolve(__dirname, '../data/schema', `${yargs.argv.s}.json`))
-    generateAll(yargs.argv.s)
-} catch (e) {
-    spinner.fail()
-    console.log(e.message)
-    process.exit(1)
+if(schemas.includes(yargs.argv.s)) {
+    generateAll(yargs.argv.s, spinner.stop, spinner.fail)
 }
-
-
-spinner.succeed('done')
-function generateAll (schema) {
-    fs.writeFile(path.resolve(__dirname, `../module/server/controller/${schema}.js`), controllerGenerator(schema))
-    fs.writeFile(path.resolve(__dirname, `../module/server/route/${schema}.js`), routeGenerator(schema))
-    fs.writeFile(path.resolve(__dirname, `../module/server/service/${schema}.js`), serviceGenerator(schema))
-    fs.writeFile(path.resolve(__dirname, `../module/server/model/${schema}.js`), modelGenerator(schema, {}))
+spinner.stop()
+function generateAll(name, done, fail) {
+    Promise.all([
+        fs.writeFile(path.resolve(__dirname, `../module/server/controller/${name}.js`), controllerGenerator(name)),
+        fs.writeFile(path.resolve(__dirname, `../module/server/route/${name}.js`), routeGenerator(name)),
+        fs.writeFile(path.resolve(__dirname, `../module/server/service/${name}.js`), serviceGenerator(name)),
+        fs.writeFile(path.resolve(__dirname, `../module/server/model/${name}.js`), modelGenerator(name))
+    ]).then(done, fail)
 }

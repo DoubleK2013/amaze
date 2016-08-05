@@ -23,7 +23,7 @@ export async function update(ctx, next) {
 
 export async function findOne(ctx, next) {
     let id = ctx.params.id
-    ctx.body = await ${name}.find(id)
+    ctx.body = await ${name}.findOne(id)
     next()
 }
 
