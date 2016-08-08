@@ -1,21 +1,14 @@
 import fs from 'fs-promise'
+import _ from 'lodash'
 import path from 'path'
-
 import yargs from 'yargs'
 import program from 'commander'
-import ora from 'ora'
-
 import pkg from '../package'
 import config from '../config/dev/default'
-
-import controllerGenerator from '../config/dev/generator/controller'
-import modelGenerator from '../config/dev/generator/model'
-import routeGenerator from '../config/dev/generator/route'
-import serviceGenerator from '../config/dev/generator/service'
-
+import generator from '../config/dev/generator'
 import getGlobbedPaths from '../util/getGlobbedPaths'
 
-const schemas = getGlobbedPaths(config.schema).map(function(v) {
+const schemas = getGlobbedPaths(config.schema).map((v) => {
     return path.basename(v, path.extname(v))
 })
 
@@ -31,23 +24,26 @@ if (!process.argv.slice(2).length) {
     process.exit(0)
 }
 
-const spinner = ora('creating')
-
-spinner.start()
-
 if (yargs.argv.a) {
-    generateAll(yargs.argv.s, spinner.stop, spinner.fail)
+    Promise.all(schemas.map((v) => {
+        return  generate(v, done, fail)
+    })).then(() => 'ALL').then(done, fail)
+}
+else if(schemas.includes(yargs.argv.s)) {
+    generate(yargs.argv.s, done, fail)
 }
 
-if(schemas.includes(yargs.argv.s)) {
-    generateAll(yargs.argv.s, spinner.stop, spinner.fail)
+// TODO support select some generator on command line
+function generate(name, done, fail) {
+    return Promise.all(_.map(Object.keys(generator), (v) => {
+        return fs.writeFile(path.resolve(__dirname, `../module/server/${v}/${name}.js`), generator[v](name)).then(() => v).then(done, fail)
+    })).then(() => name).then(done, fail)
 }
-spinner.stop()
-function generateAll(name, done, fail) {
-    Promise.all([
-        fs.writeFile(path.resolve(__dirname, `../module/server/controller/${name}.js`), controllerGenerator(name)),
-        fs.writeFile(path.resolve(__dirname, `../module/server/route/${name}.js`), routeGenerator(name)),
-        fs.writeFile(path.resolve(__dirname, `../module/server/service/${name}.js`), serviceGenerator(name)),
-        fs.writeFile(path.resolve(__dirname, `../module/server/model/${name}.js`), modelGenerator(name))
-    ]).then(done, fail)
+
+function done (rs) {
+    console.log('done', rs)
+}
+
+function fail (e) {
+    console.log('fail', e.message)
 }

@@ -16,6 +16,6 @@ router.get('/user', api.userAPI.getUser)
 router.get('/color', api.getColor)
 router.post('/color', api.getColor)
 
-router.get('/menus', api.menuAPI.getMenus)
+router.get('/menus', api.menuAPI.find)
 
 export default router

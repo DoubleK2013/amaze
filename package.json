@@ -7,7 +7,7 @@
     "start": "gulp",
     "test": "npm run test",
     "lint": "gulp lint",
-    "gen": "babel-node script/generator.js"
+    "generator": "babel-node script/generator.js"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,6 @@
     "swig": "^1.4.2"
   },
   "devDependencies": {
-    "argv": "0.0.2",
     "babel-cli": "^6.10.1",
     "babel-eslint": "^6.1.2",
     "babel-plugin-transform-runtime": "^6.6.0",
@@ -64,8 +63,6 @@
     "gulp-nodemon": "^2.1.0",
     "inquirer": "^1.1.2",
     "lodash": "^4.13.1",
-    "ora": "^0.3.0",
-    "read-metadata": "^1.0.0",
     "shelljs": "^0.7.3",
     "yargs": "^4.8.1"
   }
