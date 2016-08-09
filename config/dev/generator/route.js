@@ -9,8 +9,8 @@ let router = new Router()
 
 router.post('/${name}', ${name}.save)
 router.patch('/${name}', ${name}.update)
-router.del('/${name}/:id', ${name}.remove)
-router.get('/${name}/:id', ${name}.findOne)
+router.del('/${name}s/:id', ${name}.remove)
+router.get('/${name}s/:id', ${name}.findOne)
 router.get('/${name}s', ${name}.find)
 
 export default router

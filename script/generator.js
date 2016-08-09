@@ -15,7 +15,7 @@ const schemas = getGlobbedPaths(config.schema).map((v) => {
 
 program
     .version(pkg.version)
-    .usage('[option] <schema ...>')
+    .usage('-- [option] <schema ...>')
     .option('-s, --schema', 'schema name')
     .option('-a, --all', 'generate all schema from data/schema')
     .parse(process.argv)
