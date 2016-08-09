@@ -1,24 +1,31 @@
-import * as userService from '../service/user'
+import * as user from '../service/user'
 
-export async function addUser(ctx, next) {
-    let user = ctx.body
-    ctx.body = await userService.addUser(user)
+export async function save(ctx, next) {
+    let entry = ctx.body
+    ctx.body = await user.save(entry)
     next()
 }
 
-export async function getUser(ctx, next) {
-    ctx.body = await userService.getUser()
+export async function remove(ctx, next) {
+    let id = ctx.params.id
+    ctx.body = await user.remove(id)
     next()
 }
 
-export async function getUsers(ctx, next) {
-    const param = Object.assign({}, ctx.query)
-    ctx.body = await userService.getUsers(param)
+export async function update(ctx, next) {
+    let entry = ctx.body
+    ctx.body = await user.update(entry)
     next()
 }
 
-export async function updateUser(ctx, next) {
-    const user = ctx.body
-    ctx.body = await userService.updateUser(user)
+export async function findOne(ctx, next) {
+    let id = ctx.params.id
+    ctx.body = await user.findOne(id)
+    next()
+}
+
+export async function find(ctx, next) {
+    let filter = ctx.query
+    ctx.body = await user.find(filter)
     next()
 }

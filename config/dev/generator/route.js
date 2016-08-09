@@ -9,7 +9,7 @@ let router = new Router()
 
 router.post('/${name}', ${name}.save)
 router.patch('/${name}', ${name}.update)
-router.delete('/${name}/:id', ${name}.remove)
+router.del('/${name}/:id', ${name}.remove)
 router.get('/${name}/:id', ${name}.findOne)
 router.get('/${name}s', ${name}.find)
 

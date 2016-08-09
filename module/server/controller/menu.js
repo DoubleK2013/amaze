@@ -25,7 +25,7 @@ export async function findOne(ctx, next) {
 }
 
 export async function find(ctx, next) {
-    let filter = ctx.body
+    let filter = ctx.query
     ctx.body = await menu.find(filter)
     next()
 }

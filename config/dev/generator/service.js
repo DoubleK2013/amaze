@@ -15,7 +15,7 @@ export async function remove(id) {
 }
 
 export async function update(entry) {
-    return ${pascal([name, 'model'])}.update(entry).exec()
+    return ${pascal([name, 'model'])}.update({_id: entry.id}, entry).exec()
 }
 
 export async function findOne(id) {

@@ -12,6 +12,7 @@ const schemas = getGlobbedPaths(config.schema).map((v) => {
     return path.basename(v, path.extname(v))
 })
 
+
 program
     .version(pkg.version)
     .usage('[option] <schema ...>')
@@ -26,10 +27,10 @@ if (!process.argv.slice(2).length) {
 
 if (yargs.argv.a) {
     Promise.all(schemas.map((v) => {
-        return  generate(v, done, fail)
+        return generate(v, done, fail)
     })).then(() => 'ALL').then(done, fail)
 }
-else if(schemas.includes(yargs.argv.s)) {
+else if (schemas.includes(yargs.argv.s)) {
     generate(yargs.argv.s, done, fail)
 }
 
@@ -40,10 +41,10 @@ function generate(name, done, fail) {
     })).then(() => name).then(done, fail)
 }
 
-function done (rs) {
+function done(rs) {
     console.log('done', rs)
 }
 
-function fail (e) {
+function fail(e) {
     console.log('fail', e.message)
 }

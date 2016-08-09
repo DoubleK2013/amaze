@@ -3,44 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
-    <style>
-        body {
-            font-size: 2rem;
-        }
-        p {
-            margin: 0;
-        }
-
-        ul {
-            margin: 0;
-        }
-    </style>
 </head>
 <body>
 <main>
     <h1>{{ title }}</h1>
-    <div>
-        <p>api:</p>
-        <ul>
-            {% for key in api %}
-            {% if Array.isArray(key) %}
-            <li>
-                <ul>
-                    {% for _key in key %}
-                    <li>
-                        url: /api/{{ _key }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% else %}
-            <li>
-                url: /api/{{ key }}
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
 </main>
 </body>
 </html>

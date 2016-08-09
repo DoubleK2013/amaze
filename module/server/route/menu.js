@@ -6,7 +6,7 @@ let router = new Router()
 
 router.post('/menu', menu.save)
 router.patch('/menu', menu.update)
-router.delete('/menu/:id', menu.remove)
+router.del('/menu/:id', menu.remove)
 router.get('/menu/:id', menu.findOne)
 router.get('/menus', menu.find)
 

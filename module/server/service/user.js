@@ -1,6 +1,7 @@
-import {UserModel, UserSchema} from '../model/user'
+import {UserModel} from '../model/user'
 import PageExtra from '../support/pageExtra'
-export async function addUser(user = {
+
+export async function save(entry = {
     name: '',
     nickname: '',
     email: '',
@@ -10,17 +11,25 @@ export async function addUser(user = {
     created_at: `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
     update_at: `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`
 }) {
-    let userEntity = new UserModel(user)
-    return userEntity.save()
+    let _entry = new UserModel(entry)
+    return _entry.save()
 }
 
-export async function getUser(param) {
-    return await UserModel.findOne(param).exec()
+export async function remove(id) {
+    return UserModel.remove({_id: id}).exec()
 }
 
-export async function getUsers(param) {
+export async function update(entry) {
+    return UserModel.update({_id: entry.id}, entry).exec()
+}
 
-    let pagination = new PageExtra(param)
+export async function findOne(id) {
+    return UserModel.findOne({_id: id}).exec()
+}
+
+export async function find(filter) {
+
+    let pagination = new PageExtra(filter)
 
     let users = await UserModel
         .find({})
@@ -29,21 +38,12 @@ export async function getUsers(param) {
     pagination.total = users.length
     pagination.data = users.slice(pagination.from, pagination.to)
 
-    let { from, to, last_page} = pagination
+    let {from, to, last_page} = pagination
 
     return Object.assign({
         from: from + 1,
         to,
         last_page
     }, pagination)
-}
 
-export async function updateUser(param) {
-    return await UserModel.update(param).exec()
-}
-
-UserSchema.statics.findByName = (name) => {
-    return UserModel.findOne({
-        name: name
-    }).exec()
 }

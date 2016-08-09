@@ -1,6 +1,8 @@
 import index from '../../module/server/route/index'
-import api from '../../module/server/route/api'
+import menu from '../../module/server/route/menu'
+import user from '../../module/server/route/user'
 export default {
     index,
-    api
+    menu,
+    user
 }
