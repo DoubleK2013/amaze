@@ -34,8 +34,6 @@ program
     })
     .parse(process.argv)
 
-console.log(yargs.argv)
-
 /**
  * Help.
  */
