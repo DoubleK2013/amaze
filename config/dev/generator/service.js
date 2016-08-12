@@ -18,12 +18,12 @@ export async function update(entry) {
     return ${pascal([name, 'model'])}.update({_id: entry.id}, entry).exec()
 }
 
-export async function findOne(id) {
-    return ${pascal([name, 'model'])}.findOne({_id: id}).exec()
+export async function findById(id) {
+    return ${pascal([name, 'model'])}.findById(id).exec()
 }
 
-export async function find(filter) {
-    return ${pascal([name, 'model'])}.find(filter).exec()
+export async function find() {
+    return ${pascal([name, 'model'])}.find().exec()
 }
 
 `.trim()

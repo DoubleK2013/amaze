@@ -18,14 +18,13 @@ export async function update(ctx, next) {
     next()
 }
 
-export async function findOne(ctx, next) {
+export async function findById(ctx, next) {
     let id = ctx.params.id
-    ctx.body = await menu.findOne(id)
+    ctx.body = await menu.findById(id)
     next()
 }
 
 export async function find(ctx, next) {
-    let filter = ctx.query
-    ctx.body = await menu.find(filter)
+    ctx.body = await menu.find()
     next()
 }

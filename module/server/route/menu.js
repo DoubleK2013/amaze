@@ -7,7 +7,7 @@ let router = new Router()
 router.post('/menu', menu.save)
 router.patch('/menu', menu.update)
 router.del('/menus/:id', menu.remove)
-router.get('/menus/:id', menu.findOne)
+router.get('/menus/:id', menu.findById)
 router.get('/menus', menu.find)
 
 export default router

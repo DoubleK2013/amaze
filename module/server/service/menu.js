@@ -13,10 +13,10 @@ export async function update(entry) {
     return MenuModel.update({_id: entry.id}, entry).exec()
 }
 
-export async function findOne(id) {
-    return MenuModel.findOne({_id: id}).exec()
+export async function findById(id) {
+    return MenuModel.findById(id).exec()
 }
 
-export async function find(filter) {
-    return MenuModel.find(filter).exec()
+export async function find() {
+    return MenuModel.find().exec()
 }

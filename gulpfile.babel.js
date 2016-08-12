@@ -4,6 +4,7 @@ import gulpLoadPlugins from 'gulp-load-plugins'
 import _ from 'lodash'
 
 import defaultAssets from './config/asset/default'
+import testAssets from './config/asset/test'
 
 const plugins = gulpLoadPlugins()
 
@@ -18,6 +19,14 @@ function lintJs() {
     return gulp.src(all)
         .pipe(plugins.eslint())
         .pipe(plugins.eslint.format())
+}
+
+function test() {
+    return gulp.src(testAssets.service, { read: false })
+        .pipe(plugins.mocha({
+            reporter: 'spec',
+            timeout: 3000
+        }))
 }
 
 function serverRun() {
@@ -41,6 +50,8 @@ function watch() {
 }
 
 gulp.task('lint', lintJs)
+
+gulp.task('test', test)
 
 gulp.task('default',
     gulp.series(
