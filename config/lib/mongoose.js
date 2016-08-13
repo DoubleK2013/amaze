@@ -9,23 +9,21 @@ export default class Mongoose {
         mongoose.Promise = Promise
     }
     static connect() {
-        let connectPromise
+        let connection
         try {
-            connectPromise = mongoose.connect(cfg.uri, cfg.option)
+            connection = mongoose.connect(cfg.uri, cfg.option)
         } catch (err) {
             log.db(err)
-            connectPromise = Promise.reject(new Error(err))
+            connection = Promise.reject(new Error(err))
         }
-        return connectPromise
+        return connection
     }
     static disconnect(cb) {
-        mongoose.disconnect((err) => {
-            /* eslint no-console: 0 */
-            log.db(new Date().toLocaleTimeString(), 'database disconnect')
-            if(err) {
-                log.db(err)
-                cb(err)
-            }
+        return mongoose.disconnect().then(() => {
+            log.db(new Date().toLocaleTimeString(), 'Database had disconnected')
+        }, (err) => {
+            log.db(err)
+            cb(err)
         })
     }
 }

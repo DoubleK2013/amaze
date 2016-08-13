@@ -22,10 +22,10 @@ function lintJs() {
 }
 
 function test() {
-    return gulp.src(testAssets.service, { read: false })
+    return gulp.src(testAssets.service, {read: false})
         .pipe(plugins.mocha({
             reporter: 'spec',
-            timeout: 3000
+            timeout: 5000
         }))
 }
 
@@ -42,7 +42,7 @@ function serverRun() {
 
 function watch() {
     const es = _.union(
-        defaultAssets.client.js,
+        defaultAssets.client.Js,
         defaultAssets.server.allJS,
         defaultAssets.server.gulpfile
     )

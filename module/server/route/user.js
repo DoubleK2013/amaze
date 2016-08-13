@@ -4,6 +4,7 @@ import * as user from '../controller/user'
 
 let router = new Router()
 
+router.get('/users/page', user.findPageable)
 router.post('/user', user.save)
 router.patch('/user', user.update)
 router.del('/users/:id', user.remove)

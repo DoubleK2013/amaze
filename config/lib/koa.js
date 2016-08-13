@@ -54,7 +54,7 @@ function initStaticModules(app) {
 async function initDB(app) {
     await Mongoose.connect()
     app.context.db = mongoose.connection
-    log.db(new Date().toLocaleTimeString(), 'connected')
+    log.db(new Date().toLocaleTimeString(), 'Database had connected')
 }
 
 function initLogger(app) {
