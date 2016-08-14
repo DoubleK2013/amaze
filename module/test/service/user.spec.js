@@ -26,7 +26,8 @@ describe('user service', function () {
             per_page: 10,
             current_page: 1
         }).then(function (page) {
-            expect(page.data.length).to.be.equal(page.per_page)
+            expect(page).to.be.have.property('per_page').with.equal(10)
+            expect(page).to.be.have.property('data').with.length.at.most(page.per_page)
         })
     })
 
