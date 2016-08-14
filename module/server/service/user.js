@@ -1,5 +1,5 @@
 import {UserModel} from '../model/user'
-import PageExtra from '../support/pageExtra'
+import Page from '../support/page'
 
 export async function save(entry) {
     let _entry = new UserModel(entry)
@@ -24,33 +24,32 @@ export async function find() {
 
 export async function findPageable(query) {
 
-    const pagination = new PageExtra(query)
-    pagination.total = await UserModel.count()
+    const page = new Page(query)
+    page.total = await UserModel.count()
 
     const users = await UserModel
         .find()
-        .skip(pagination.from)
-        .limit(pagination.per_page)
+        .skip(page.from)
+        .limit(page.per_page)
         .exec()
-
-    pagination.data = users
 
     const {
         current_page,
         per_page,
         from,
         to,
-        last_page,
-        data
-        } = pagination
+        total,
+        last_page
+    } = page
 
     return {
         current_page,
         per_page,
-        form: from + 1,
+        from: from + 1,
         to,
+        total,
         last_page,
-        data
+        data: users
     }
 
 }
