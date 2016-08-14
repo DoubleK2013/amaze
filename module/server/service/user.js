@@ -24,11 +24,10 @@ export async function find() {
 
 export async function findPageable(query) {
 
-    let pagination = new PageExtra(query)
-    console.log(pagination)
+    const pagination = new PageExtra(query)
     pagination.total = await UserModel.count()
 
-    let users = await UserModel
+    const users = await UserModel
         .find()
         .skip(pagination.from)
         .limit(pagination.per_page)
@@ -36,6 +35,22 @@ export async function findPageable(query) {
 
     pagination.data = users
 
-    return pagination
+    const {
+        current_page,
+        per_page,
+        from,
+        to,
+        last_page,
+        data
+        } = pagination
+
+    return {
+        current_page,
+        per_page,
+        form: from + 1,
+        to,
+        last_page,
+        data
+    }
 
 }

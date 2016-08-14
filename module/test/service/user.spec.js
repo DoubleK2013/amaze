@@ -21,7 +21,7 @@ describe('user service', function () {
         })
     })
 
-    it('total', function() {
+    it('findPageable', function() {
         return user.findPageable({
             per_page: 10,
             current_page: 1

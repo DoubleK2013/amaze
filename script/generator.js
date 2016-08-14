@@ -7,11 +7,11 @@ import chalk from 'chalk'
 import pkg from '../package'
 import config from '../config/dev/default'
 import generator from '../config/dev/generator'
-import getGlobbedPaths from '../util/getGlobbedPaths'
+import unfold from '../util/unfold'
 
 // All schemas
-const schemas = getGlobbedPaths(config.schema).map((v) => {
-    return path.basename(v, path.extname(v))
+const schemas = unfold(config.schema).map((valve) => {
+    return path.basename(valve, path.extname(valve))
 })
 
 // Usage

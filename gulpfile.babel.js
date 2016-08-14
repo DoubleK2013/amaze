@@ -8,7 +8,6 @@ import testAssets from './config/asset/test'
 
 const plugins = gulpLoadPlugins()
 
-
 function lintJs() {
     const all = _.union(
         defaultAssets.client.Js,
@@ -22,7 +21,7 @@ function lintJs() {
 }
 
 function test() {
-    return gulp.src(testAssets.service, {read: false})
+    return gulp.src(testAssets.all, {read: false})
         .pipe(plugins.mocha({
             reporter: 'spec',
             timeout: 5000
