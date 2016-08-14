@@ -8,6 +8,7 @@ node_modules
 
 # ide config
 .idea/
+.vscode/
 
 # static
 public/
