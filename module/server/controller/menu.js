@@ -18,13 +18,6 @@ export async function update(ctx, next) {
     next()
 }
 
-export async function updateById(ctx, next) {
-    let entry = ctx.body
-    entry._id = ctx.params.id
-    ctx.body = await menu.update(entry)
-    next()
-}
-
 export async function findById(ctx, next) {
     let id = ctx.params.id
     ctx.body = await menu.findById(id)

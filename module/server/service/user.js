@@ -11,7 +11,7 @@ export async function remove(id) {
 }
 
 export async function update(entry) {
-    return UserModel.update({_id: entry._id}, entry).exec()
+    return UserModel.update({_id: entry.id}, entry).exec()
 }
 
 export async function findById(id) {

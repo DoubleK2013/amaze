@@ -1,21 +1,13 @@
 # 操作记录
 
-#### 安装
+#### 项目初始化
 ```
-git clone https://github.com/DoubleK2013/amaze.git
-```
-
-#### 下载依赖
-```
- cd amaze && npm i 
+    npm init
+    
 ```
 
-#### 运行项目
+#### 安装组件
 ```
-npm start
-```
+    npm i 
 
-# 自动生成crmv(controller, route, model, service)
-```
-npm run generator -- -a -crmv
 ```

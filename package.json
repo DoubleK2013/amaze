@@ -1,7 +1,7 @@
 {
   "name": "amaze",
   "version": "0.0.1",
-  "description": "A simple scaffold to begin project with koa2 and mongodb",
+  "description": "it is amaze",
   "main": "app.js",
   "scripts": {
     "start": "gulp",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/DoubleK2013/amaze.git"
   },
   "keywords": [
-    "amaze", "koa2", "mongodb"
+    "amaze"
   ],
   "author": "weixu",
   "license": "MIT",

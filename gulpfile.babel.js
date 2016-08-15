@@ -1,18 +1,20 @@
 import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
 
+import _ from 'lodash'
+
 import defaultAssets from './config/asset/default'
 import testAssets from './config/asset/test'
 
 const plugins = gulpLoadPlugins()
 
 function lintJs() {
-    const all = [].concat(
+    const all = _.union(
         defaultAssets.client.Js,
         defaultAssets.server.allJS,
-        defaultAssets.server.gulpfile,
-        defaultAssets.server.test
+        defaultAssets.server.gulpfile
     )
+
     return gulp.src(all)
         .pipe(plugins.eslint())
         .pipe(plugins.eslint.format())
@@ -29,7 +31,7 @@ function test() {
 function serverRun() {
     return plugins.nodemon({
         script: 'app.js',
-        watch: [].concat(
+        watch: _.union(
             defaultAssets.server.views,
             defaultAssets.server.allJS,
             defaultAssets.server.gulpfile
@@ -38,7 +40,7 @@ function serverRun() {
 }
 
 function watch() {
-    const es = [].concat(
+    const es = _.union(
         defaultAssets.client.Js,
         defaultAssets.server.allJS,
         defaultAssets.server.gulpfile

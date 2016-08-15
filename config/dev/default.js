@@ -1,3 +1,3 @@
 export default {
-    schema: 'data/schema/*.js'
+    schema: ['data/schema/*.js']
 }

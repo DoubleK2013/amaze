@@ -1,5 +1,5 @@
 export default {
-    all: 'test/**/*.spec.js',
-    server: 'test/module/server/**/*.spec.js',
-    client: 'test/module/client/*.spec.js'
+    all: ['module/test/**/*.spec.js', 'test/**/*.spec.js'],
+    server: 'module/test/server/**/*.spec.js',
+    client: 'module/test/client/*.spec.js'
 }
