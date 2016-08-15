@@ -15,7 +15,6 @@ In the application folder run this in the command-line:
 $ git clone https://github.com/DoubleK2013/amaze.git
 $ npm install
 $ npm start
-$
 ```
 
 #### Generator
@@ -25,5 +24,4 @@ $
 
 ```bash
 $ npm run generator -- -a -crmv
-$
 ```
