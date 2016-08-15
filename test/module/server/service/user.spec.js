@@ -1,8 +1,8 @@
 import {expect} from 'chai'
-import Mongoose from '../../../config/lib/mongoose'
+import Mongoose from '../../../../config/lib/mongoose'
 
-import * as user from '../../server/service/user'
-
+import * as user from '../../../../module/server/service/user'
+/* eslint no-console: 0 */
 describe('user service', function () {
 
     before(function() {

@@ -2,9 +2,6 @@
 
 1. RESTful API
 2. swagger
-3. docson
-4. typeson
+3. fileupload
 
 
-#### 额外
-1. gulp-typson

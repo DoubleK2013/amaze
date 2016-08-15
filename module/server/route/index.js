@@ -1,10 +1,8 @@
-import Router from 'koa-router'
-
-import * as controller from '../controller/index'
-
-let router = new Router()
-
-router.get('/', controller.renderIndex)
-
-
-export default router
+import home from './home'
+import menu from './menu'
+import user from './user'
+export default {
+    home,
+    menu,
+    user
+}

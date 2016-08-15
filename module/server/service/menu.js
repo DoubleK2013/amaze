@@ -10,7 +10,7 @@ export async function remove(id) {
 }
 
 export async function update(entry) {
-    return MenuModel.update({_id: entry.id}, entry).exec()
+    return MenuModel.update({_id: entry._id}, entry).exec()
 }
 
 export async function findById(id) {

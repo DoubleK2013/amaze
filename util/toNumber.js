@@ -1,7 +1,7 @@
-import _ from 'lodash'
+import {toNumber as _toNumber} from 'lodash'
 export default function toNumber(value, defaultValue) {
-    if([NaN].includes(_.toNumber(value))) {
+    if([NaN].includes(_toNumber(value))) {
         return defaultValue
     }
-    return _.toNumber(value)
+    return _toNumber(value)
 }
