@@ -18,6 +18,13 @@ export async function update(ctx, next) {
     next()
 }
 
+export async function updateById(ctx, next) {
+    let entry = ctx.body
+    entry._id = ctx.params.id
+    ctx.body = await user.update(entry)
+    next()
+}
+
 export async function findById(ctx, next) {
     let id = ctx.params.id
     ctx.body = await user.findById(id)
@@ -26,11 +33,5 @@ export async function findById(ctx, next) {
 
 export async function find(ctx, next) {
     ctx.body = await user.find()
-    next()
-}
-
-export async function findPageable(ctx, next) {
-    let query = ctx.query
-    ctx.body = await user.findPageable(query)
     next()
 }

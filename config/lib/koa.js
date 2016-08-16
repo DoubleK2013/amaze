@@ -13,7 +13,7 @@ import mongoose from 'mongoose'
 import log from './logger'
 import Mongoose from './mongoose'
 
-import routes from './route'
+import routes from '../../module/server/route'
 
 export default init(new Koa())
 

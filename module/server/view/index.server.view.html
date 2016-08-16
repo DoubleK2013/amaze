@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
 </head>
 <body>
 <main>
-    <h1>{{ title }}</h1>
+  <h1>{{ title }}</h1>
+  <form>
+    <input type="file" name="files" multiple>
+    <input type="text" name="fileName">
+  </form>
+  <script>
+    document.querySelector('[type="file"]').addEventListener('change', function (event) {
+      const input = event.target
+      if (input.files.length) {
+        const formData = new FormData(input.form)
+        fetch('/files', {
+          method: 'POST',
+          body: formData
+        })
+        .then(function (res) {
+          return res.json()
+        })
+        .then(function (data) {
+          document.querySelector('h1').innerText = data.done
+        })
+      }
+    }, false)
+  </script>
 </main>
 </body>
 </html>
