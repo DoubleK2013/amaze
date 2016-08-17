@@ -1,9 +1,9 @@
 import * as file from '../service/file'
-import expand from '../../../util/expand'
+import flattened from '../../../util/flattened'
 
 export async function save(ctx, next) {
     ctx.body = await file.save({
-        files: expand(ctx.request.files.files)
+        files: flattened(ctx.request.files.files)
     })
     next()
 }

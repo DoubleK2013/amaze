@@ -29,7 +29,9 @@ function init(app) {
 }
 
 function initBodyParser(app) {
-    app.use(convert(parser()))
+    app.use(convert(parser({
+        uploadDir: 'public/tmp'
+    })))
 }
 
 // 初始化后端模板引擎，配置模板存放路径及扩展名

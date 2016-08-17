@@ -14,7 +14,9 @@
     "url": "git+https://github.com/DoubleK2013/amaze.git"
   },
   "keywords": [
-    "amaze", "koa2", "mongodb"
+    "amaze",
+    "koa2",
+    "mongodb"
   ],
   "author": "weixu",
   "license": "MIT",
