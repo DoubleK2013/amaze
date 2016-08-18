@@ -10,6 +10,8 @@ import onerror from 'koa-onerror'
 
 import mongoose from 'mongoose'
 
+import fileCfg from '../asset/file'
+
 import log from './logger'
 import Mongoose from './mongoose'
 
@@ -30,7 +32,7 @@ function init(app) {
 
 function initBodyParser(app) {
     app.use(convert(parser({
-        uploadDir: 'public/tmp'
+        uploadDir: fileCfg.tmp
     })))
 }
 

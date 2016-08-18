@@ -4,6 +4,9 @@ import * as fileHelper from '../support/fileHelper'
 export async function save(entry) {
     const files = await fileHelper.fileupload(entry.files)
     return Promise.all(files.map((file) => {
+        if(file.code) {
+            return Promise.resolve(file)
+        }
         return new FileModel(file).save()
     }))
 }

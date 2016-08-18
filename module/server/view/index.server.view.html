@@ -24,7 +24,14 @@
           return res.json()
         })
         .then(function (data) {
-          document.querySelector('h1').innerText = data.done
+          let p = document.getElementsByTagName('form')[0].parentNode
+          data.forEach(function (v) {
+            if(!v.code) {
+              let img = document.createElement('img')
+              img.src = v.url
+              p.appendChild(img)
+            }
+          })
         })
       }
     }, false)
