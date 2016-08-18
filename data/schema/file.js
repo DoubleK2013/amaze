@@ -4,5 +4,6 @@ export default {
     create_at: Date,
     last_modify_at: Date,
     url: String,
-    path: String
+    path: String,
+    size: Number
 }

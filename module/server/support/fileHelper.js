@@ -29,12 +29,14 @@ async function saveFile(file) {
     return new Promise(function (resolve, reject) {
         fs.rename(file.path, path.resolve(config.upload, file.name), function (err) {
             if (err) reject(new Error(err))
+            fs.unlink(file.path)
             resolve({
                 name: file.name,
-                path: path.resolve(config.upload, file.name),
-                size: file.size,
                 type: file.type,
-                url: `/${config.url}/${file.name}`,
+                size: file.size,
+                path: path.resolve(config.upload, file.name),
+                url: path.join('/', config.url, file.name),
+                create_at: new Date(),
                 last_modify_at: file.lastModifiedDate
             })
         })

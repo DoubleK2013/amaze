@@ -2,7 +2,7 @@
   "name": "amaze",
   "version": "0.0.1",
   "description": "A simple scaffold to begin project with koa2 and mongodb",
-  "main": "app.js",
+  "main": "entrance.js",
   "scripts": {
     "start": "gulp",
     "test": "gulp test",
@@ -38,7 +38,7 @@
     "koa-static": "^2.0.0",
     "koa-views": "^5.0.2",
     "mini-logger": "^1.1.1",
-    "mongoose": "^4.5.4",
+    "mongoose": "^4.5.9",
     "swig": "^1.4.2"
   },
   "devDependencies": {
