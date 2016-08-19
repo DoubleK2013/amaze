@@ -7,6 +7,7 @@ export default {
     errorCode: {
         UNACCEPTABLE_TYPE: 1,
         EXCEEDS_THE_MAXIMUM_SIZE: 2,
+        NOT_FILE_UPLOAD: 3,
         SERVER_ERROR: 9
     }
 }

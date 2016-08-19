@@ -26,4 +26,10 @@ describe('fileHelper', function () {
             done()
         })
     })
+    it('fileupload empty', function (done) {
+        fileHelper.fileupload([]).then(function (result) {
+            expect(result[0]).to.have.property('code').with.equal(3)
+            done()
+        })
+    })
 })

@@ -4,13 +4,21 @@ import config from '../../../config/asset/file'
 import log from '../../../config/lib/logger'
 
 export async function fileupload(files) {
+    if(!files.length) {
+        return Promise.resolve([{
+            code: config.errorCode.NOT_FILE_UPLOAD
+        }])
+    }
     return Promise.all(files.map((file) => {
         return saveFile(file)
     }))
 }
 
-async function saveFile(file) {
-    if(!config.accept.includes(file.type)) {
+async function saveFile(file, {
+        maxSize = config.maxFileSize,
+        accept = config.accept
+    } = {}) {
+    if(!accept.includes(file.type)) {
         return Promise.reject(new Error('Unacceptable types')).catch((err) => {
             log.error(err)
             return {
@@ -18,7 +26,7 @@ async function saveFile(file) {
             }
         })
     }
-    if (file.size > config.maxFileSize) {
+    if (file.size > maxSize) {
         return Promise.reject(new Error('Exceeds the maximum size')).catch((err) => {
             log.error(err)
             return {
