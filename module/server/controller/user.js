@@ -35,3 +35,8 @@ export async function find(ctx, next) {
     ctx.body = await user.find()
     next()
 }
+
+export async function findPageable(ctx, next) {
+    ctx.body = await user.findPageable(ctx.query)
+    next()
+}

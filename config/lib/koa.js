@@ -21,13 +21,30 @@ export default init(new Koa())
 
 function init(app) {
     initViewEngine(app)
-    initLogger(app)
+    initErrorLogger(app)
     beautifyError(app)
     initDB(app)
     initBodyParser(app)
     initStaticModules(app)
     initServerRouter(app)
+    initNotMatchRouter(app)
     return app
+}
+
+// 所有路由都不匹配时
+function initNotMatchRouter(app) {
+    app.use(async (ctx, next) => {
+        switch (ctx.status) {
+            case 404:
+                ctx.redirect('/404')
+                break
+            case 500:
+                ctx.redirect('/500')
+                break
+            // no default
+        }
+        next()
+    })
 }
 
 function initBodyParser(app) {
@@ -40,7 +57,6 @@ function initBodyParser(app) {
 // 模板引擎：swig
 // 扩展名： server.view.html
 function initViewEngine(app) {
-
     app.use(views(`${path.resolve('.')}/module/server/view`, {
         extension: 'server.view.html',
         map: {
@@ -61,7 +77,7 @@ async function initDB(app) {
     log.db(new Date().toLocaleTimeString(), 'Database had connected')
 }
 
-function initLogger(app) {
+function initErrorLogger(app) {
     app.on('error', (err) => {
         log.error(err)
     })
