@@ -15,12 +15,8 @@ catch (e) {
     fs.mkdirSync(logPath)
 }
 
-// 日志文件系统生成代码
-let log = logger({
+export default logger({
     dir: path.join('.', cfg.dir),
     categories: cfg.categories,
     format: cfg.format
-
 })
-
-export default log
