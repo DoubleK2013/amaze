@@ -68,7 +68,7 @@ function initViewEngine(app) {
 // 静态资源路由
 function initStaticModules(app) {
     // 第三方静态资源
-    app.use(mount('/static', serve(path.resolve('.', 'public'))))
+    app.use(convert(mount('/static', serve(path.resolve('.', 'public')))))
 }
 
 async function initDB(app) {
