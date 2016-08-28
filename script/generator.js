@@ -6,7 +6,7 @@ import program from 'commander'
 import chalk from 'chalk'
 import pkg from '../package'
 import config from '../config/dev/default'
-import generator from '../config/dev/generator'
+import generator from '../config/dev/template'
 import unfold from '../util/unfold'
 
 // All schemas
