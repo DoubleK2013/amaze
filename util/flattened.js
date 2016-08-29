@@ -3,13 +3,7 @@ export default function flattened (a) {
         return []
     }
     if(Array.isArray(a)){
-        return a.map((value) => {
-            return flattened(value)
-        }).reduce((previousValue, currentValue) => {
-            return previousValue.concat(currentValue)
-        }, [])
+        return a.map((value) => flattened(value)).reduce((previousValue, currentValue) => previousValue.concat(currentValue),[])
     }
-    else {
-        return Array.of(a)
-    }
+    return [a]
 }
