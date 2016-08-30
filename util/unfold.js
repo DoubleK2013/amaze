@@ -4,10 +4,7 @@ export default function unfold(pattern) {
         return glob.sync(pattern)
     }
     else if(Array.isArray(pattern)) {
-        return pattern.map((value) => {
-            return unfold(value)
-        }).reduce((previousValue, currentValue) => {
-            return previousValue.concat(currentValue)
-        }, [])
+        return pattern.map((value) => unfold(value)).reduce((previousValue, currentValue) => previousValue.concat(currentValue), [])
     }
+    return []
 }

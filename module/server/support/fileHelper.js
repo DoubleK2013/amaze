@@ -2,6 +2,7 @@ import path from 'path'
 import fs from 'fs-promise'
 import config from '../../../config/asset/file'
 import log from '../../../config/lib/logger'
+import flattened from '../../../util/flattened'
 
 export async function fileupload(files) {
     if(!files.length) {
@@ -14,12 +15,19 @@ export async function fileupload(files) {
     }))
 }
 
+export async function clearTmpFiles() {
+    return Promise.all(flattened(config.tmp).map((file) => {
+        return removeTmpFile(file)
+    }))
+}
+
 async function saveFile(file, {
         maxSize = config.maxFileSize,
         accept = config.accept
     } = {}) {
     if(!accept.includes(file.type)) {
         return Promise.reject(new Error('Unacceptable types')).catch((err) => {
+            removeTmpFile(file.path)
             log.error(err)
             return {
                 code: config.errorCode.UNACCEPTABLE_TYPE
@@ -29,6 +37,7 @@ async function saveFile(file, {
     if (file.size > maxSize) {
         return Promise.reject(new Error('Exceeds the maximum size')).catch((err) => {
             log.error(err)
+            removeTmpFile(file.path)
             return {
                 code: config.errorCode.EXCEEDS_THE_MAXIMUM_SIZE
             }
@@ -37,7 +46,7 @@ async function saveFile(file, {
     return new Promise(function (resolve, reject) {
         fs.rename(file.path, path.resolve(config.upload, file.name), function (err) {
             if (err) reject(new Error(err))
-            fs.unlink(file.path)
+            removeTmpFile(file.path)
             resolve({
                 name: file.name,
                 type: file.type,
@@ -53,5 +62,14 @@ async function saveFile(file, {
         return {
             code: config.errorCode.SERVER_ERROR
         }
+    })
+}
+
+async function removeTmpFile (file) {
+    return new Promise(function (resolve, reject) {
+        fs.unlink(file, function(err) {
+            if(err) reject(new Error(err))
+            resolve()
+        })
     })
 }

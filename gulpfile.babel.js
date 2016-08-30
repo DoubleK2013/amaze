@@ -22,8 +22,9 @@ function lintJs() {
 
 function test() {
     return gulp.src(testAssets.all, {read: false})
-        .pipe(plugins.mocha({
-            reporter: 'spec',
+        .pipe(plugins.spawnMocha({
+            reporter: 'mochawesome',
+            istanbul: true,
             timeout: 5000
         }))
 }

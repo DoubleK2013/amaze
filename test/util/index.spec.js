@@ -5,6 +5,7 @@ import util from '../../util'
 describe('util', function () {
     it('unfold', function () {
         expect(util.unfold(['config/dev/generator/*.js'])).to.eql(util.unfold('config/dev/generator/*.js'))
+        expect(util.unfold()).to.eql([])
     })
     it('toNumber', function () {
         expect(util.toNumber(10)).to.be.equal(10)
