@@ -33,7 +33,7 @@ describe('fileHelper', function () {
         })
     })
 
-    it('clearTmpFiles', function (done) {
+    it.skip('clearTmpFiles', function (done) {
         fileHelper.clearTmpFiles().then(function (result) {
             expect(result).to.be.a('array')
             done()
