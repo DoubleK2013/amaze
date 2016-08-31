@@ -26,17 +26,16 @@ describe('fileHelper', function () {
             done()
         })
     })
+
     it('fileupload empty', function () {
         return fileHelper.fileupload([]).then(function (result) {
             expect(result[0]).to.have.property('code').with.equal(3)
         })
     })
+
     it('clearTmpFiles', function (done) {
         fileHelper.clearTmpFiles().then(function (result) {
             expect(result).to.be.a('array')
-            done()
-        }).catch(function (e) {
-            console.log(e)
             done()
         })
     })
